@@ -81,11 +81,7 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     cd lm-evaluation-harness
     pip install -e .
     pip install langdetect immutabledict
-    
-    # Install vLLM with CUDA 11.8.
-    export VLLM_VERSION=0.2.4
-    export PYTHON_VERSION=310
-    pip install https://github.com/vllm-project/vllm/releases/download/v${VLLM_VERSION}/vllm-${VLLM_VERSION}+cu118-cp${PYTHON_VERSION}-cp${PYTHON_VERSION}-manylinux1_x86_64.whl
+    pip install https://github.com/vllm-project/vllm/releases/download/v0.3.0/vllm-0.3.0+cu118-cp310-cp310-manylinux1_x86_64.whl
     
     benchmark="arc"
     lm_eval --model vllm \
