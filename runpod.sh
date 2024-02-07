@@ -79,9 +79,10 @@ if [ "$BENCHMARK" == "nous" ]; then
 elif [ "$BENCHMARK" == "openllm" ]; then
     git clone --depth 1 --branch v0.4.0 https://github.com/EleutherAI/lm-evaluation-harness
     cd lm-evaluation-harness
-    pip install -e ".[vllm,promptsource]"
+    pip install -e .
+    pip install vllm==0.3.0
     pip install langdetect immutabledict
-
+    
     benchmark="arc"
     lm_eval --model vllm \
         --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE \
