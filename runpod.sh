@@ -80,7 +80,7 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     git clone --depth 1 --branch v0.4.0 https://github.com/EleutherAI/lm-evaluation-harness
     cd lm-evaluation-harness
     pip install -e .
-    pip install vllm==0.3.0
+    pip install vllm==0.2.5
     pip install langdetect immutabledict
     
     benchmark="arc"
