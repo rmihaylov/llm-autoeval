@@ -77,7 +77,7 @@ if [ "$BENCHMARK" == "nous" ]; then
     python ../llm-autoeval/main.py . $(($end-$start))
 
 elif [ "$BENCHMARK" == "openllm" ]; then
-    git clone --depth 1 --branch v0.4.1 https://github.com/EleutherAI/lm-evaluation-harness
+    git clone --depth 1 --branch v0.4.0 https://github.com/EleutherAI/lm-evaluation-harness
     cd lm-evaluation-harness
     pip install -e .
     pip install langdetect immutabledict
