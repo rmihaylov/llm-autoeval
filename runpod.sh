@@ -80,8 +80,12 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     git clone --depth 1 --branch v0.4.0 https://github.com/EleutherAI/lm-evaluation-harness
     cd lm-evaluation-harness
     pip install -e .
-    pip install vllm==0.2.5
     pip install langdetect immutabledict
+    
+    # Install vLLM with CUDA 11.8.
+    export VLLM_VERSION=0.2.4
+    export PYTHON_VERSION=310
+    pip install https://github.com/vllm-project/vllm/releases/download/v${VLLM_VERSION}/vllm-${VLLM_VERSION}+cu118-cp${PYTHON_VERSION}-cp${PYTHON_VERSION}-manylinux1_x86_64.whl
     
     benchmark="arc"
     lm_eval --model vllm \
