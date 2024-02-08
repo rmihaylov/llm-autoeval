@@ -100,22 +100,22 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     #     --batch_size auto \
     #     --output_path ./${benchmark}.json
 
-    # benchmark="mmlu"
-    # lm_eval --model vllm \
-    #     --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
-    #     --tasks mmlu \
-    #     --num_fewshot 5 \
-    #     --batch_size auto \
-    #     --verbosity DEBUG \
-    #     --output_path ./${benchmark}.json
-    
-    benchmark="truthfulqa"
+    benchmark="mmlu"
     lm_eval --model vllm \
         --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
-        --tasks truthfulqa \
-        --num_fewshot 0 \
+        --tasks mmlu \
+        --num_fewshot 5 \
         --batch_size auto \
+        --verbosity DEBUG \
         --output_path ./${benchmark}.json
+    
+    # benchmark="truthfulqa"
+    # lm_eval --model vllm \
+    #     --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
+    #     --tasks truthfulqa \
+    #     --num_fewshot 0 \
+    #     --batch_size auto \
+    #     --output_path ./${benchmark}.json
     
     # benchmark="winogrande"
     # lm_eval --model vllm \
