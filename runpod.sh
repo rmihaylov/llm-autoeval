@@ -136,7 +136,8 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     end=$(date +%s)
     echo "Elapsed Time: $(($end-$start)) seconds"
     
-    python main.py . $(($end-$start))
+    cd llm-autoeval/
+    python main.py lm-evaluation-harness/ $(($end-$start))
 else
     echo "Error: Invalid BENCHMARK value. Please set BENCHMARK to 'nous' or 'openllm'."
 fi
