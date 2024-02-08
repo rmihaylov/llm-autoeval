@@ -86,7 +86,7 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     
     benchmark="arc"
     lm_eval --model vllm \
-        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE \
+        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
         --tasks arc_challenge \
         --num_fewshot 25 \
         --batch_size auto \
@@ -94,7 +94,7 @@ elif [ "$BENCHMARK" == "openllm" ]; then
 
     benchmark="hellaswag"
     lm_eval --model vllm \
-        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE \
+        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
         --tasks hellaswag \
         --num_fewshot 10 \
         --batch_size auto \
@@ -102,7 +102,7 @@ elif [ "$BENCHMARK" == "openllm" ]; then
 
     # benchmark="mmlu"
     # lm_eval --model vllm \
-    #     --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE \
+    #     --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
     #     --tasks mmlu \
     #     --num_fewshot 5 \
     #     --batch_size auto \
@@ -111,7 +111,7 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     
     benchmark="truthfulqa"
     lm_eval --model vllm \
-        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE \
+        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
         --tasks truthfulqa \
         --num_fewshot 0 \
         --batch_size auto \
@@ -119,7 +119,7 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     
     benchmark="winogrande"
     lm_eval --model vllm \
-        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE \
+        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
         --tasks winogrande \
         --num_fewshot 5 \
         --batch_size auto \
@@ -127,7 +127,7 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     
     benchmark="gsm8k"
     lm_eval --model vllm \
-        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE \
+        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
         --tasks gsm8k \
         --num_fewshot 5 \
         --batch_size auto \
