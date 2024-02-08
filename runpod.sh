@@ -84,21 +84,21 @@ elif [ "$BENCHMARK" == "openllm" ]; then
     pip install https://github.com/vllm-project/vllm/releases/download/v0.3.0/vllm-0.3.0+cu118-cp310-cp310-manylinux1_x86_64.whl
     pip install transformers==4.1
     
-    benchmark="arc"
-    lm_eval --model vllm \
-        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
-        --tasks arc_challenge \
-        --num_fewshot 25 \
-        --batch_size auto \
-        --output_path ./${benchmark}.json
+    # benchmark="arc"
+    # lm_eval --model vllm \
+    #     --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
+    #     --tasks arc_challenge \
+    #     --num_fewshot 25 \
+    #     --batch_size auto \
+    #     --output_path ./${benchmark}.json
 
-    benchmark="hellaswag"
-    lm_eval --model vllm \
-        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
-        --tasks hellaswag \
-        --num_fewshot 10 \
-        --batch_size auto \
-        --output_path ./${benchmark}.json
+    # benchmark="hellaswag"
+    # lm_eval --model vllm \
+    #     --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
+    #     --tasks hellaswag \
+    #     --num_fewshot 10 \
+    #     --batch_size auto \
+    #     --output_path ./${benchmark}.json
 
     # benchmark="mmlu"
     # lm_eval --model vllm \
@@ -117,27 +117,28 @@ elif [ "$BENCHMARK" == "openllm" ]; then
         --batch_size auto \
         --output_path ./${benchmark}.json
     
-    benchmark="winogrande"
-    lm_eval --model vllm \
-        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
-        --tasks winogrande \
-        --num_fewshot 5 \
-        --batch_size auto \
-        --output_path ./${benchmark}.json
+    # benchmark="winogrande"
+    # lm_eval --model vllm \
+    #     --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
+    #     --tasks winogrande \
+    #     --num_fewshot 5 \
+    #     --batch_size auto \
+    #     --output_path ./${benchmark}.json
     
-    benchmark="gsm8k"
-    lm_eval --model vllm \
-        --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
-        --tasks gsm8k \
-        --num_fewshot 5 \
-        --batch_size auto \
-        --output_path ./${benchmark}.json
+    # benchmark="gsm8k"
+    # lm_eval --model vllm \
+    #     --model_args pretrained=${MODEL},dtype=auto,gpu_memory_utilization=0.8,trust_remote_code=$TRUST_REMOTE_CODE,max_model_len=$MAX_MODEL_LENGTH \
+    #     --tasks gsm8k \
+    #     --num_fewshot 5 \
+    #     --batch_size auto \
+    #     --output_path ./${benchmark}.json
 
     end=$(date +%s)
     echo "Elapsed Time: $(($end-$start)) seconds"
     
     cd llm-autoeval/
     python main.py lm-evaluation-harness/ $(($end-$start))
+
 else
     echo "Error: Invalid BENCHMARK value. Please set BENCHMARK to 'nous' or 'openllm'."
 fi
