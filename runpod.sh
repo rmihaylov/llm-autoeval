@@ -22,6 +22,8 @@ apt update
 apt install -y screen vim git-lfs
 screen
 
+apt-get install -y rustc
+
 # Install common libraries
 pip install -q requests accelerate sentencepiece pytablewriter einops protobuf
 
